@@ -5,6 +5,7 @@
 <title>Be My Valentine 💘</title>
 
 <style>
+    /* Page */
     body {
         font-family: Arial, sans-serif;
         background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
@@ -25,6 +26,7 @@
         color: rgba(255, 0, 85, 0.7);
         z-index: 1;
         user-select: none;
+        pointer-events: none;
     }
 
     @keyframes fall {
@@ -38,34 +40,56 @@
         }
     }
 
+    /* BOX: made responsive & larger for desktop + phone */
     .box {
         background: white;
-        width: 360px;
-        padding: 20px;
+        /* use responsive width: up to 700px on desktop, 90vw on small screens */
+        width: min(90vw, 700px);
+        padding: 32px;
         border-radius: 20px;
         text-align: center;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        box-shadow: 0 14px 30px rgba(0,0,0,0.2);
         position: relative;
         z-index: 10;
+        box-sizing: border-box;
     }
 
+    /* QUESTION: larger and wraps nicely */
     h2 {
         color: #ff4d6d;
         white-space: pre-line;
+        margin: 0 0 14px 0;
+        font-size: 1.5rem; /* bigger for readability */
+        line-height: 1.3;
     }
 
+    /* IMAGE: responsive and larger */
     img {
-        width: 150px;
-        margin: 15px 0;
+        width: min(60%, 360px); /* scales with box but capped */
+        max-width: 420px;
+        height: auto;
+        display: block;
+        margin: 18px auto;
+        border-radius: 12px;
+    }
+
+    /* BUTTONS: bigger and touch-friendly */
+    #buttons {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-top: 8px;
     }
 
     button {
-        padding: 10px 20px;
+        padding: 14px 24px;
         margin: 8px;
         border: none;
-        border-radius: 10px;
-        font-size: 16px;
+        border-radius: 12px;
+        font-size: 18px;
         cursor: pointer;
+        min-width: 120px;
     }
 
     .yes {
@@ -75,6 +99,42 @@
 
     .no {
         background: #ccc;
+        color: #222;
+    }
+
+    /* Small screens fine-tuning */
+    @media (max-width: 420px) {
+        .box {
+            padding: 20px;
+            border-radius: 16px;
+        }
+        h2 {
+            font-size: 1.15rem;
+        }
+        img {
+            width: 72%;
+        }
+        button {
+            padding: 12px 18px;
+            font-size: 16px;
+            min-width: 100px;
+        }
+    }
+
+    /* Very large screens */
+    @media (min-width: 1200px) {
+        .box {
+            padding: 40px;
+            border-radius: 22px;
+        }
+        h2 {
+            font-size: 1.8rem;
+        }
+        button {
+            font-size: 20px;
+            padding: 16px 28px;
+            min-width: 140px;
+        }
     }
 </style>
 </head>
