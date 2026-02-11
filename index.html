@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine 💘</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    /* ❤️ FALLING HEARTS */
+    .heart {
+        position: fixed;
+        top: -10px;
+        font-size: 20px;
+        animation: fall linear infinite;
+        color: rgba(255, 0, 85, 0.7);
+        z-index: 1;
+        user-select: none;
+    }
+
+    @keyframes fall {
+        0% {
+            transform: translateY(-10px) translateX(0);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(110vh) translateX(50px);
+            opacity: 0;
+        }
+    }
+
+    .box {
+        background: white;
+        width: 360px;
+        padding: 20px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        position: relative;
+        z-index: 10;
+    }
+
+    h2 {
+        color: #ff4d6d;
+        white-space: pre-line;
+    }
+
+    img {
+        width: 150px;
+        margin: 15px 0;
+    }
+
+    button {
+        padding: 10px 20px;
+        margin: 8px;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .yes {
+        background: #ff4d6d;
+        color: white;
+    }
+
+    .no {
+        background: #ccc;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2 id="question">
+        Would you be my Valentine, mahal? 💖
+    </h2>
+
+    <img id="image"
+         src="411592467_778789407407190_3647313935848305089_n.jpg">
+
+    <div id="buttons">
+        <button class="yes" onclick="yesAnswer()">Yes 💕</button>
+        <button class="no" onclick="noAnswer()">No 😢</button>
+    </div>
+</div>
+
+<script>
+/* ❤️ FALLING HEARTS SCRIPT (ADDED ONLY) */
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (8 + Math.random() * 5) + "s";
+    heart.style.fontSize = (12 + Math.random() * 18) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 15000);
+}
+setInterval(createHeart, 500);
+
+/* -------- YOUR ORIGINAL CODE (UNCHANGED) -------- */
+
+let questions = [
+    "Would you be my Valentine, mahal? 💖",
+    "sure ka mahal ayaw mo? kawawa naman ako🥺",
+    "Please be my Valentine mahal😭😭? 💌",
+    "Pleeeaaassseeee mahal:( 💔",
+    "I promise I’ll take care of you🥹",
+    "I’ll give you a lot of kiss and hugs!🤗",
+    "I’ll give you money😏",
+    "I’ll love you always 💕",
+    "Last chance… please mahal?😭",
+    "Okay… wala ka ng choice mag yes ka nalang BWAHAHAHHA"
+];
+
+const imagesEmoji = [
+    "411592467_778789407407190_3647313935848305089_n.jpg",
+    "https://media.tenor.com/Ch_6P9HWkf8AAAAM/guy-crying-meme-guy-crying.gif",
+    "https://media.tenor.com/diOUKyT0TxQAAAAm/xd.webp",
+    "https://media.tenor.com/rl_da90w6a0AAAAM/%E7%9A%849.gif",
+    "https://media.tenor.com/6uLhV3HSljwAAAAm/cute-love.webp",
+    "https://media.tenor.com/wpnr4STeVPwAAAAm/dudu-flow-kiss-cute-dudu.webp",
+    "https://media.tenor.com/oGnDUHQK21UAAAAm/chicken-bro-money.webp",
+    "https://media.tenor.com/iAEsefBAWbsAAAAm/iloveyousomuch-i-love-you-very-much.webp",
+    "https://media.tenor.com/lDMve-IMXY8AAAAM/spongebob-squarepants-begging.gif",
+    "https://media.tenor.com/ST9hlCSVsf0AAAAM/evil-laugh.gif"
+];
+
+let index = 0;
+
+function yesAnswer() {
+    document.getElementById("question").innerText =
+        "YEHEY! 💖 Happy Valentine’s Day mahal!\nI love you soooo much mwapss 😘💕";
+
+    document.getElementById("image").src =
+        "605567717_1361345859068989_5865834484298402941_n.jpg";
+
+    document.getElementById("buttons").innerHTML = "";
+}
+
+function noAnswer() {
+    index++;
+
+    if (index < questions.length - 1) {
+        document.getElementById("question").innerText = questions[index];
+        document.getElementById("image").src = imagesEmoji[index];
+    } else {
+        document.getElementById("question").innerText = questions[index];
+        document.getElementById("image").src = imagesEmoji[index];
+        document.getElementById("buttons").innerHTML =
+            `<button class="yes" onclick="yesAnswer()">Yes / OK 💕</button>`;
+    }
+}
+</script>
+
+</body>
+</html>
